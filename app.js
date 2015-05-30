@@ -1,3 +1,6 @@
 'use strict';
 
-import {core} from 'ericgj/mom';
+const M = require('ericgj/mom')
+    , core = M.core;
+
+console.log(core.options);

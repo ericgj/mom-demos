@@ -1,4 +1,5 @@
 jspm_packages
 node_modules
-public/build
-
+public/*.js
+public/*.map
+scratch

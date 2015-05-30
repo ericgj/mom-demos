@@ -1,16 +1,30 @@
-BUILD=public/build
+BUILDDIR=public
+APP=./app
+JSAPP=./app.js
+JSAPPSRC=$(wildcard app/*/*.js)
 
-prod: $(BUILD)/app-bundle-sfx.js
+build: jspm $(BUILDDIR)/app-bundle.js
 
-debug: $(BUILD)/app-bundle.js
+buildsfx: $(BUILDDIR)/app-bundle-sfx.js
 
-$(BUILD)/app-bundle.js:
-	@jspm bundle ./app $@
+jspm: $(BUILDDIR)/config.js $(BUILDDIR)/jspm_packages
 
-$(BUILD)/app-bundle-sfx.js:
-	@jspm bundle-sfx ./app $@
+$(BUILDDIR)/config.js: ./config.js
+	@cp -f $< $@
+
+$(BUILDDIR)/jspm_packages: ./jspm_packages
+	@mkdir -p $@
+	@cp -f ./jspm_packages/es6-module-loader* $@/
+	@cp -f ./jspm_packages/system* $@/
+
+$(BUILDDIR)/app-bundle.js: $(JSAPP) $(JSAPPSRC)
+	@jspm bundle $(APP) $@
+
+$(BUILDDIR)/app-bundle-sfx.js: $(JSAPP) $(JSAPPSRC)
+	@jspm bundle-sfx $(APP) $@
 
 clean:
-	@rm -f $(BUILD)/*
+	@rm -f $(BUILDDIR)/config.js $(BUILDDIR)/app-bundle*
+	@rm -fr $(BUILDDIR)/jspm_packages
 
-.PHONY: prod debug clean
+.PHONY: build jspm buildsfx clean
