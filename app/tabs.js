@@ -15,7 +15,7 @@ const { values, keysWhere } = util.mori;
 const accessor = (key,defval) => (seq) => mori.get(seq,key,defval);
 const mutableMap = 
   compose(
-    mori.toJs,
+    mori.intoArray,
     mori.map
   )
 const mutableValues = compose( mori.intoArray, values );
