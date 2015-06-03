@@ -1,30 +1,43 @@
-BUILDDIR=public
+PUBDIR=public
+BUILDDIR=public/bundle
 APP=./app
+DEMO=./demo-tabs
 JSAPP=./app.js
 JSAPPSRC=$(wildcard app/*/*.js)
+JSDEMO=./demo-tabs.js
+JSDEMOSRC=$(wildcard app/*.js)
 
-build: jspm $(BUILDDIR)/app-bundle.js
 
-buildsfx: $(BUILDDIR)/app-bundle-sfx.js
+servedemo: builddemo
+	@cd public && python -m SimpleHTTPServer 8080 && cd ..
 
-jspm: $(BUILDDIR)/config.js $(BUILDDIR)/jspm_packages
+builddemo: jspm $(BUILDDIR)/demo.js
 
-$(BUILDDIR)/config.js: ./config.js
-	@cp -f $< $@
+build: jspm $(BUILDDIR)/app.js
 
-$(BUILDDIR)/jspm_packages: ./jspm_packages
+buildsfx: $(BUILDDIR)/app-sfx.js
+
+jspm: $(PUBDIR)/config.js $(PUBDIR)/jspm_packages
+
+$(PUBDIR)/config.js: ./config.js
+	cp -f $< $@
+
+$(PUBDIR)/jspm_packages: ./jspm_packages
 	@mkdir -p $@
-	@cp -f ./jspm_packages/es6-module-loader* $@/
-	@cp -f ./jspm_packages/system* $@/
+	cp -f ./jspm_packages/es6-module-loader* $@/
+	cp -f ./jspm_packages/system* $@/
 
-$(BUILDDIR)/app-bundle.js: $(JSAPP) $(JSAPPSRC)
+$(BUILDDIR)/app.js: $(JSAPP) $(JSAPPSRC)
 	@jspm bundle $(APP) $@
 
-$(BUILDDIR)/app-bundle-sfx.js: $(JSAPP) $(JSAPPSRC)
+$(BUILDDIR)/app-sfx.js: $(JSAPP) $(JSAPPSRC)
 	@jspm bundle-sfx $(APP) $@
 
-clean:
-	@rm -f $(BUILDDIR)/config.js $(BUILDDIR)/app-bundle*
-	@rm -fr $(BUILDDIR)/jspm_packages
+$(BUILDDIR)/demo.js: $(JSDEMO) $(JSDEMOSRC)
+	@jspm bundle $(DEMO) $@
 
-.PHONY: build jspm buildsfx clean
+clean:
+	@rm -f $(PUBDIR)/config.js $(BUILDDIR)/*
+	@rm -fr $(PUBDIR)/jspm_packages
+
+.PHONY: build builddemo servedemo jspm buildsfx clean

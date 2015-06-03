@@ -18,14 +18,44 @@ System.config({
     "babel": "npm:babel-core@5.4.7",
     "babel-runtime": "npm:babel-runtime@5.4.7",
     "core-js": "npm:core-js@0.9.13",
-    "ericgj/mom": "github:ericgj/mom@master",
-    "github:ericgj/mom@master": {
+    "ericgj/mom": "github:ericgj/mom@0.4.2",
+    "flyd": "npm:flyd@0.1.6",
+    "mori": "npm:mori@0.3.2",
+    "x-is-array": "npm:x-is-array@0.1.0",
+    "github:ericgj/mom@0.3.1": {
       "error": "npm:error@4.4.0",
-      "is-array": "npm:is-array@1.0.1",
       "mori": "npm:mori@0.3.2",
       "raf": "npm:raf@3.0.0",
       "vdom-thunk": "npm:vdom-thunk@3.0.0",
       "virtual-dom": "npm:virtual-dom@2.0.1",
+      "x-is-array": "npm:x-is-array@0.1.0",
+      "xtend": "npm:xtend@4.0.0"
+    },
+    "github:ericgj/mom@0.4.1": {
+      "error": "npm:error@4.4.0",
+      "mori": "npm:mori@0.3.2",
+      "raf": "npm:raf@3.0.0",
+      "vdom-thunk": "npm:vdom-thunk@3.0.0",
+      "virtual-dom": "npm:virtual-dom@2.0.1",
+      "x-is-array": "npm:x-is-array@0.1.0",
+      "xtend": "npm:xtend@4.0.0"
+    },
+    "github:ericgj/mom@0.4.2": {
+      "error": "npm:error@4.4.0",
+      "mori": "npm:mori@0.3.2",
+      "raf": "npm:raf@3.0.0",
+      "vdom-thunk": "npm:vdom-thunk@3.0.0",
+      "virtual-dom": "npm:virtual-dom@2.0.1",
+      "x-is-array": "npm:x-is-array@0.1.0",
+      "xtend": "npm:xtend@4.0.0"
+    },
+    "github:ericgj/mom@master": {
+      "error": "npm:error@4.4.0",
+      "mori": "npm:mori@0.3.2",
+      "raf": "npm:raf@3.0.0",
+      "vdom-thunk": "npm:vdom-thunk@3.0.0",
+      "virtual-dom": "npm:virtual-dom@2.0.1",
+      "x-is-array": "npm:x-is-array@0.1.0",
       "xtend": "npm:xtend@4.0.0"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -54,14 +84,20 @@ System.config({
     "npm:ev-store@7.0.0": {
       "individual": "npm:individual@3.0.0"
     },
+    "npm:flyd@0.1.6": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
     "npm:global@4.3.0": {
-      "min-document": "npm:min-document@2.14.1",
+      "min-document": "npm:min-document@2.14.2",
       "process": "npm:process@0.5.2"
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:min-document@2.14.1": {
+      "dom-walk": "npm:dom-walk@0.1.1"
+    },
+    "npm:min-document@2.14.2": {
       "dom-walk": "npm:dom-walk@0.1.1"
     },
     "npm:mori@0.3.2": {

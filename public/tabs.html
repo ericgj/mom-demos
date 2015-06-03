@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  
+  <style type="text/css">
+    
+    .tabs > * {
+      display: inline-block;
+      margin-right: 1em;
+      padding: 0.5em 1em;
+      border: 1px solid darkgrey;
+      border-radius: 3px;
+      background-color: lightgrey;
+      color: black;
+      text-decoration: none;
+    }
+
+    .tabs > .active {
+      background-color: cyan;
+    }
+
+  </style>
+
+</head>
+
+<body>
+  
+  <h1>Tabs example</h1>
+  <div id="target"></div>
+  <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script>
+  <script src="./bundle/demo.js"></script>
+  <script>System.import('demo-tabs');</script>
+
+</body>
+
+</html>
+
